@@ -1,0 +1,85 @@
+# Output Table 1
+
+Content                         Level   Variable        Unit    Code       file
+------------------------------------------------------------------------------------
+landseamask (scalar points p)   40      WETO                    300 
+landseamask (vector points u)   40      AMSUO                   301       	
+landseamask (vector points v)   40      AMSUE                   302          		
+depth at pressure points         1      DEPTO  	        m       200          	
+depth at vector points (u)       1      DEUTO           m       201         	
+depth at vector points (v)       1      DEUTE           m       202   
+level thickness (pressure )     40      DDPO            m       430         	
+level thickness (vector u )     40      DDUO            m       431      	
+level thickness (vector v )     40      DDUE            m       432
+grid distance x                  1      DLXP            m       410           	
+grid distance y                  1      DLYP            m       420     GRID_INFO.ext
+grid distance x  (vector u)      1      DLXU            m       411       	
+grid distance y  (vector u)      1      DLYU            m       421       	
+grid distance x  (vector v)      1      DLXV            m       412    
+grid distance y  (vector v)      1      DLYV            m       422
+longitude in degrees (pressure)  1      LONP_G          deg     110             	
+latitude in degrees (pressure)   1      LATP_G          deg     120         	
+longitude in degrees (vector u)  1      LONU_G          deg     111           	
+latitude in degrees (vector u)   1      LATU_G          deg     121    	
+longitude in degrees (vector v)  1      LONV_G          deg  	112
+latitude in degrees (vector v)   1      LATV_G          deg     122   
+
+# Notes:
+# Level 40 and 1 represent the 3D and 2D variables.
+# GRID_INFO.ext is an EXTRA format file, which can be inquired via the CDO operators
+# The Grid variables code are composed of the three numbers and abidy by the ABC-rule.
+#  A: 1-> lon/lat 2 -> water depth; 3 -> sea mask; 4 -> grid interval
+#  B: 0 -> no direction; 1/2/3 -> X/Y/Z direction
+#  C: 0/1/2 -> variable locates at P/U/V point     
+
+
+# Output Table 2
+
+Content                         Level   Variable        Unit    Code    fort.x  Cpp
+------------------------------------------------------------------------------------
+potential temperature           40      THO             C         2     71      M	
+salinity                        40      SAO             psu       5     72      M	
+zon. velocity                   40      UKO             m/s       3     73      M	
+mer. velocity                   40      VKE             m/s       4     74      M	
+zon. velocity (Barotropic)       1      USO             m/s     203     63      M B	
+mer. velocity (Barotropic)       1      VSE             m/s     204     64      M B	
+sealevel                         1      ZO              m         1     82      M
+ver. velocity                   40      WO              m/s       7    146      M 	
+ver. velocity (nonhydrostatic)  40      WNO             m/s       7    146      M NH	
+pressure                        40      PO              Pa/1025   6     76      M
+nonhydrostatic pressure         40      PNH             Pa/1025         77      M NH
+velocity divergence             40      DIVG            1/m             78      M NH
+
+
+freshwaterflux by restoring      1      EMINPO          m/s      67     79      M
+total heatflux                   1      FLUM            W/m**2   70     84      M	
+total freshwaterflux             1      PEM             m/s      79     85      M	
+ice thickness                    1      SICTHO          m        13     86      M	
+ice compactness                  1      SICOMO          frac.    15     87      M	
+zon. ice velocity                1      SICUO           m/s      35     88      M	
+mer. ice velocity                1      SICVE           m/s      36     89      M
+seaice transport x               1      SICTRU          m**2/s  142    147      M	
+seaice transport y               1      SICTRV          m**2/s  143    148      M	
+
+	
+snow thickness                   1      SICSNO          m       141    136      M
+heat flux shortwave              1      QSWO            W/m**2  176    137      M	
+heat flux longwave               1      QLWO            W/m**2  177    138      M
+heat flux latent                 1      QLAO            W/m**2  147    139      M
+heat flux sensible               1      QSEO            W/m**2  146    140      M
+net freshwater flux + runoff     1      PRECO           m/s      65    141      M
+RiverRunoff			1     	rivrun		m/s   	305    305      M
+		
+				
+vertical impuls diffusion       40      AVO             m**2/s  110    144      M D	
+vertical T,S diffusion          40      DVO             m**2/s  111    145      M D	
+wind mixing                     40      WTMIX           m**2/s  612    245      M D     
+GM vertical velocity            40      WGO             m/s     207    246      M G	
+GM BolX				1	BOLX		 ?       ?     159	M G	
+GM BolY				1      	BOLY	         ?       ?     160      M G	
+	
+
+# Notes:
+# Level 40 and 1 represent the 3D and 2D variables.
+# By default, the outputs are of EXTRA format, which can be inquired via the CDO operators.
+# M=MEAN,D=DIFFDIAG,B=BAROTROPIC,G=GMBOLUS,NH=NON_HYDROSTATIC    	

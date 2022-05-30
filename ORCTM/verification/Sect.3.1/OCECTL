@@ -1,0 +1,57 @@
+ &NPROCS
+ nprocx=36
+ nprocy=1
+  /
+ &OCECTL
+ DT      = 2.5E-4
+ CAULAPTS= 0.0002
+ CAULAPUV= 0.00375
+ AUS     = 0.
+ CAH00   = 0.
+ DV0     = 2.E-6
+ AV0     = 2.E-6
+ CWT     = 5.E-4
+ CSTABEPS= 0.030
+ DBACK   = 0.E-6
+ ABACK   = 0.E-6
+ CRELSAL = 0.
+ CRELTEM = 0.
+ CDVOCON = 0.0
+ CAVOCON = 0.0
+ LY_START = 2011
+ LY_END = 2011
+ LM_START = 1
+ NYEARS  = 0
+ NMONTS  = 1
+ IMEAN   = 4
+ ISTART  = 0
+ I3DREST = 0
+ /
+ &OCEDZW
+  DZW = 100*1.E-3
+ /
+ &OCEOBC
+!--- sponge layer grid numbers
+ Spongew = 30
+ Spongee = 30
+ Spongen = 30
+ Sponges = 30
+!--- sponge layer relaxation time parameters with (1/x) function
+ Urelaxinner = 44714.1643
+ Urelaxbound = 8.0 
+ Vrelaxinner = 44714.1643
+ Vrelaxbound = 8.0 
+!--- sponge layer relaxation time parameters with (exp) function
+ TAO = 500.0 
+!--- components   = M2       S2     N2       K2       K1      O1       P1       Q1
+!--- periods (hr) = 12.4206  12     12.6583  11.9672  23.9345 25.8193  24.0659  26.8684
+!--- Gauss Bridge Tidal Period(D2&D1)
+ tidalPeriod = 44714.1643, 43200.0000, 45570.0536, 43082.0453,
+               86164.0906, 92949.6301, 86637.2048, 96726.0838
+ /
+ &OCEDIAG
+  DMEAN = 4
+  I_POINT_G = 582,582,1337,1199,918,918,918,1093
+  J_POINT_G = 171,315,282,423,196,270,341,277
+ /
+ EOF

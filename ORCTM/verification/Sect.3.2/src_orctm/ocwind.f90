@@ -1,0 +1,42 @@
+      SUBROUTINE OCWIND
+!SV**** *OCWIND* -  UPDATE OCEAN VELOCITIES WITH THE SURFACE STRESS.
+!SV
+!SV     MODIFIED
+!SV     --------
+!SV     STEPHAN VENZKE,    MPI, 1999
+!SV       26.08.99
+!SV       - INCLUDED FLUXES OPTION (I.E. DISTINGUISH BEWTEEN TAU OVER WATER AND ICE)
+!SV         HERE ONLY TAU OVER WATER IS CONSIDERED (I.E. TXO IS REPLACED BY AOFLTXWO)
+!SV         TAU OVER ICE IS USED IN SBR OCICE
+!SV       02.09.99
+!SV       - INCLUDED COMMON-BLOCK MO_FLUXES1 FOR FORCING WITH ATMOSPHERIC FLUXES
+!SV         *COMMON*    *FLUXES1* - ATMOSPHERIC FIELDS ON THE OCEAN GRID.
+!SV ------------------------------------------------------------------------------
+!
+!        UWE  08.03.00
+!           INCLUDE TAUWAT, OCEAN ICE STRESS FROM OCICE
+      USE MO_PARAM1
+      USE MO_COMMO1
+      USE MO_COMMO2
+      USE MO_COMMOAU1
+!
+      DTDECT=DT/DZW(1)
+
+      DO J=2,JE1
+      DO I=(I_start+1),IE1
+      UR=SICOMU(I,J)
+      UOO(I,J,1)=UOO(I,J,1)+DTDECT*AMSUO(I,J,1)*(TXO(I,J)*UR            &
+     &  +(1.-UR)*AMSUO(I,J,1)*TAUWATU(I,J))
+      ENDDO
+      ENDDO
+
+      DO J=(J_start+1),JE1
+      DO I=2,IE1
+      VR=SICOMV(I,J)
+      VOE(I,J,1)=VOE(I,J,1)+DTDECT*AMSUE(I,J,1)*(TYE(I,J)*VR            &
+     &  +(1.-VR)*AMSUE(I,J,1)*TAUWATV(I,J))
+      ENDDO
+      ENDDO
+
+      RETURN
+      END
